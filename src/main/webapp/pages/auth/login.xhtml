@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: BamBalooon
+  Date: 23.05.14
+  Time: 20:47
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:form="http://www.springframework.org/tags/form">
+
+<h:head>
+    <title>Broker Page</title>
+</h:head>
+
+<h:body>
+    <f:view>
+        <h:form>
+            <h:panelGrid id="grid" columns="2">
+                <h:panelGroup>
+                    <h:outputLabel>Nazwa użytkownika:</h:outputLabel>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:inputText value="#{loginBean.username}" required="true"/>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:outputLabel>Hasło:</h:outputLabel>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:inputSecret value="#{loginBean.password}" required="true" />
+                </h:panelGroup>
+                <h:panelGroup/>
+                <h:panelGroup>
+                    <input type="hidden" name="redirect" value="../secured/index.xhtml"/>
+                    <h:commandLink value="akceptuj" action="#{loginBean.login}"/>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:link outcome="register">Rejerstracja</h:link>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:link outcome="registerCompany">Rejestracja Firmy</h:link>
+                </h:panelGroup>
+            </h:panelGrid>
+        </h:form>
+    </f:view>
+</h:body>
+
+</html>

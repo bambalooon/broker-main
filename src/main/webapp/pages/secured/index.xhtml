@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: BamBalooon
+  Date: 23.05.14
+  Time: 20:47
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Broker Page</title>
+</h:head>
+
+<h:body>
+    <f:view>
+        <h:form>
+            <h:inputText id="name" value="#{helloBean.name}" />
+            <h:commandLink value="akceptuj" action="hello"/><br />
+            <h:link outcome="../offer/new.xhtml">New Offer</h:link><br/>
+            <h:commandLink action="#{loginBean.logout}" value="Wyloguj!"/>
+        </h:form>
+    </f:view>
+</h:body>
+
+</html>

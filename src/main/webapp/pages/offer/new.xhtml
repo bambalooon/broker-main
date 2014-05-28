@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: BamBalooon
+  Date: 23.05.14
+  Time: 20:47
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:form="http://www.springframework.org/tags/form">
+
+<h:head>
+    <title>Broker Page</title>
+    <h:outputScript library="js" name="jquery-1.11.1.min.js" target="head" />
+    <h:outputScript library="js" name="newOffer.js" target="head" />
+    <h:outputStylesheet library="css" name="style.css" />
+
+</h:head>
+
+<h:body>
+    <f:view>
+        <form action="../../rs/offer/management/new/site" method="post" enctype="multipart/form-data">
+            <h:panelGrid id="grid" columns="2">
+                <h:outputLabel>Opis oferty:</h:outputLabel>
+                <textarea name="description" cols="10" rows="4" />
+                <h:outputLabel>Zdjęcie:</h:outputLabel>
+                <input type="file" name="image" />
+                <f:facet name="footer">
+                    <h:panelGroup/>
+                    <button type="submit">Dodaj</button>
+                </f:facet>
+            </h:panelGrid>
+            <h:panelGrid id="roomTable" columns="2">
+                <h:panelGroup>
+                    <input type="text" name="rooms" />
+                </h:panelGroup>
+                <h:panelGroup>
+                    <input type="text" name="prices" />
+                </h:panelGroup>
+                <f:facet name="header">
+                    <h:outputLabel>Pokój</h:outputLabel>
+                    <h:outputLabel>Cena</h:outputLabel>
+                </f:facet>
+                <f:facet name="footer">
+                    <button id="addRoom" type="button">Dodaj</button>
+                </f:facet>
+            </h:panelGrid>
+        </form>
+    </f:view>
+</h:body>
+
+</html>

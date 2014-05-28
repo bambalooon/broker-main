@@ -1,0 +1,7 @@
+add to PasswordEqualityValidator - custom message!
+& UsernameExists
+add converter for SecurityGroups & DB
+web.xml - servlet error? ws..
+lepsze miejsce na dodanie roles??
+kodowanie polskich znakow - w bazie?
+COMPANY moze wejsc na pierwsza jakas scache'owana strone w secured

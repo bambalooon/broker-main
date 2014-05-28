@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+    <context-root>/broker-main</context-root>
+    <security-domain>BrokerRealm</security-domain>
+</jboss-web>

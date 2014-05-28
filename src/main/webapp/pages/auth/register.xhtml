@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: BamBalooon
+  Date: 23.05.14
+  Time: 20:47
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:form="http://www.springframework.org/tags/form">
+
+<h:head>
+    <title>Broker Page</title>
+</h:head>
+
+<h:body>
+    <f:view>
+        <h:form id="registerForm">
+            <h:panelGrid id="grid" columns="2">
+                <h:panelGroup>
+                    <h:outputLabel>Nazwa użytkownika:</h:outputLabel>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:inputText value="#{registerBean.username}" required="true">
+                        <f:validator validatorId="usernameExistsValidator"/>
+                    </h:inputText>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:outputLabel>Hasło #1:</h:outputLabel>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:inputSecret value="#{registerBean.password1}" required="true">
+                        <f:validator validatorId="passwordEqualityValidator"/>
+                        <f:attribute name="password2" value="#{password2}"/>
+                    </h:inputSecret>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:outputLabel>Hasło #2:</h:outputLabel>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:inputSecret value="#{registerBean.password2}" id="password2" binding="#{password2}" required="true"/>
+                </h:panelGroup>
+                <h:panelGroup/>
+                <h:panelGroup>
+                    <h:commandLink value="akceptuj" action="#{registerBean.register}"/>
+                </h:panelGroup>
+            </h:panelGrid>
+        </h:form>
+    </f:view>
+</h:body>
+
+</html>

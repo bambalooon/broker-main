@@ -1,0 +1,146 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+    <display-name>BrokerService</display-name>
+
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>resteasy.scan</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>resteasy.scan.resources</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>resteasy.scan.providers</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>/pages/auth/login.xhtml</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>jersey-servlet</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <!--<init-param>-->
+            <!--<param-name>com.sun.jersey.config.property.packages</param-name>-->
+            <!--<param-value>pl.bb.broker.rest</param-value>-->
+        <!--</init-param>-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>jersey-servlet</servlet-name>
+        <url-pattern>/rs/offer/*</url-pattern>
+    </servlet-mapping>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Rest Offer editing</web-resource-name>
+            <url-pattern>/rs/offer/management/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>COMPANY</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>JSF Offer Editing</web-resource-name>
+            <url-pattern>/pages/offer/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>COMPANY</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    
+    <servlet>
+        <servlet-name>BrokerAuth</servlet-name>
+        <servlet-class>pl.bb.broker.brokerauthentication.ws.authentication.AuthenticationServiceImpl</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BrokerAuth</servlet-name>
+        <url-pattern>/ws/auth</url-pattern>
+    </servlet-mapping>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Secure Area</web-resource-name>
+            <url-pattern>/pages/secured/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>CLIENT</role-name>
+            <role-name>COMPANY</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Login Page</web-resource-name>
+            <url-pattern>/pages/auth/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>BrokerRealm</realm-name>
+        <form-login-config>
+            <form-login-page>/pages/auth/login.xhtml</form-login-page>
+            <form-error-page>/pages/auth/error.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    
+    <security-role>
+        <role-name>CLIENT</role-name>
+    </security-role>
+    
+    <security-role>
+        <role-name>COMPANY</role-name>
+    </security-role>
+
+    <resource-ref>
+        <res-ref-name>java:jdbc/datasources/brokerDB</res-ref-name>
+        <res-type>
+            javax.sql.DataSource
+        </res-type>
+        <res-auth>
+            Container
+        </res-auth>
+    </resource-ref>
+
+
+</web-app>
