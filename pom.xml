@@ -21,6 +21,9 @@
       <apache-io.version>1.3.2</apache-io.version>
       <mimepull.version>1.9.4</mimepull.version>
       <primefaces.version>5.0</primefaces.version>
+      <log4j.version>1.2.17</log4j.version>
+      <tomcat.version>8.0.8</tomcat.version>
+      <apache-lang.version>3.3.2</apache-lang.version>
   </properties>
 
   <repositories>
@@ -117,42 +120,60 @@
           <groupId>com.sun.jersey</groupId>
           <artifactId>jersey-server</artifactId>
           <version>${jersey.version}</version>
-          <scope>compile</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>com.sun.jersey</groupId>
+          <artifactId>jersey-client</artifactId>
+          <version>${jersey.version}</version>
       </dependency>
 
       <dependency>
           <groupId>org.hibernate</groupId>
           <artifactId>hibernate-core</artifactId>
           <version>${hibernate.version}</version>
-          <scope>compile</scope>
       </dependency>
 
       <dependency>
           <groupId>org.hibernate</groupId>
           <artifactId>hibernate-entitymanager</artifactId>
           <version>${hibernate.version}</version>
-          <scope>compile</scope>
       </dependency>
 
       <dependency>
           <groupId>com.sun.jersey.contribs</groupId>
           <artifactId>jersey-multipart</artifactId>
           <version>${jersey.version}</version>
-          <scope>compile</scope>
       </dependency>
 
       <dependency>
           <groupId>org.apache.commons</groupId>
           <artifactId>commons-io</artifactId>
           <version>${apache-io.version}</version>
-          <scope>compile</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+          <version>${apache-lang.version}</version>
       </dependency>
 
       <dependency>
           <groupId>org.primefaces</groupId>
           <artifactId>primefaces</artifactId>
           <version>${primefaces.version}</version>
-          <scope>compile</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <version>${log4j.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.tomcat</groupId>
+          <artifactId>tomcat-catalina</artifactId>
+          <version>${tomcat.version}</version>
       </dependency>
 
   </dependencies>

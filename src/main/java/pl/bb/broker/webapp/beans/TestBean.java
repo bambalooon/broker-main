@@ -30,6 +30,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestScoped
 public class TestBean {
 
+    private String field;
+
     public String login() throws ServletException{
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
@@ -50,4 +52,20 @@ public class TestBean {
 
     }
 
+    public String action() {
+        return null;
+    }
+
+    public String encode() {
+        field = CryptoUtil.createPasswordHash("SHA-256", "BASE64", "UTF-8", "zhr2", field);
+        return null;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
+    }
 }

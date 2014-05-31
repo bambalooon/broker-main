@@ -15,57 +15,45 @@
 
 <h:head>
     <title>Broker Page</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 </h:head>
 
 <h:body>
     <f:view>
         <h:form id="registerForm">
             <h:panelGrid id="grid" columns="2">
-                <h:panelGroup>
-                    <h:outputLabel>Nazwa użytkownika:</h:outputLabel>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:inputText value="#{registerCompanyBean.username}" required="true">
-                        <f:validator validatorId="usernameExistsValidator"/>
-                    </h:inputText>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:outputLabel>Hasło #1:</h:outputLabel>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:inputSecret value="#{registerCompanyBean.password1}" required="true">
-                        <f:validator validatorId="passwordEqualityValidator"/>
-                        <f:attribute name="password2" value="#{password2}"/>
-                    </h:inputSecret>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:outputLabel>Hasło #2:</h:outputLabel>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:inputSecret value="#{registerCompanyBean.password2}" id="password2" binding="#{password2}" required="true"/>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:outputLabel>Nazwa firmy:</h:outputLabel>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:inputText value="#{registerCompanyBean.companyName}" required="true"/>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:outputLabel>Adres:</h:outputLabel>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:inputText value="#{registerCompanyBean.address}"/>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:outputLabel>Telefon:</h:outputLabel>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:inputText value="#{registerCompanyBean.phone}"/>
-                </h:panelGroup>
-                <h:panelGroup/>
-                <h:panelGroup>
+                <h:outputLabel>Nazwa użytkownika:</h:outputLabel>
+                <h:inputText value="#{registerCompanyBean.username}" required="true">
+                    <f:validator validatorId="usernameExistsValidator"/>
+                </h:inputText>
+
+                <h:outputLabel>Hasło #1:</h:outputLabel>
+                <h:inputSecret value="#{registerCompanyBean.password1}" required="true">
+                    <f:validator validatorId="passwordEqualityValidator"/>
+                    <f:attribute name="password2" value="#{password2}"/>
+                </h:inputSecret>
+
+                <h:outputLabel>Hasło #2:</h:outputLabel>
+                <h:inputSecret value="#{registerCompanyBean.password2}" id="password2" binding="#{password2}" required="true"/>
+
+                <h:outputLabel>Imie:</h:outputLabel>
+                <h:inputText value="#{registerCompanyBean.firstname}" required="true" />
+
+                <h:outputLabel>Nazwisko:</h:outputLabel>
+                <h:inputText value="#{registerCompanyBean.surname}" required="true" />
+
+                <h:outputLabel>Nazwa firmy:</h:outputLabel>
+                <h:inputText value="#{registerCompanyBean.companyName}" required="true"/>
+
+                <h:outputLabel>Adres:</h:outputLabel>
+                <h:inputText value="#{registerCompanyBean.address}"/>
+
+                <h:outputLabel>Telefon:</h:outputLabel>
+                <h:inputText value="#{registerCompanyBean.phone}"/>
+
+                <f:facet name="footer">
                     <h:commandLink value="akceptuj" action="#{registerCompanyBean.registerCompany}"/>
-                </h:panelGroup>
+                </f:facet>
             </h:panelGrid>
         </h:form>
     </f:view>

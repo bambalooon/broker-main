@@ -15,12 +15,17 @@
 
 <h:head>
     <title>Broker Page</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 </h:head>
 
 <h:body>
     <f:view>
         <h:form>
-            <h:commandLink value="test" action="#{testBean.login}"/>
+            <h:inputText value="#{testBean.field}" />
+            <h:commandLink value="test" action="#{testBean.action}"/><br/>
+            <h:commandLink value="testLogin" action="#{testBean.login}"/><br/>
+            <h:commandLink value="encode" action="#{testBean.encode}" />
+            <!--<p:editor/>-->
         </h:form>
     </f:view>
 </h:body>

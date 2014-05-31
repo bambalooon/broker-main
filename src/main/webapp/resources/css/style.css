@@ -1,0 +1,25 @@
+#offerTable { margin-bottom: 10px; }
+#roomsTable { margin-bottom: 10px; }
+.roomBtn {
+    width: 20px;
+    height: 20px;
+}
+
+.idColumn {
+    width: 3%;
+}
+.cityColumn {
+    width: 10%;
+}
+.descColumn {
+    width: 30%;
+}
+.companyColumn {
+    width: 10%;
+}
+.roomsColumn {
+    width: 15%;
+}
+.imgColumn {
+    width: 32%;
+}

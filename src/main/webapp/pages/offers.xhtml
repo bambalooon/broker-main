@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: BamBalooon
+  Date: 23.05.14
+  Time: 20:47
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>Broker Page</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</h:head>
+
+<h:body>
+    <f:view>
+        <p:dataTable value="#{offersBean.offers}" var="offer" rowIndexVar="rowIndex" scrollable="false">
+            <p:column headerText="#" style="width: 3%;">
+                <h:outputLabel>
+                    #{offer.id}
+                </h:outputLabel>
+            </p:column>
+            <p:column headerText="Miasto" style="width: 10%;">
+                <h:outputLabel>
+                    #{offer.city}
+                </h:outputLabel>
+            </p:column>
+            <p:column headerText="Opis" style="width: 30%;">
+                <h:outputText escape="false" value="#{offer.description}" />
+            </p:column>
+            <p:column headerText="Firma" style="width: 10%;">
+                <h:outputLabel>
+                    #{offer.company.companyname}
+                </h:outputLabel>
+            </p:column>
+            <p:column headerText="Pokoje" style="width: 15%;">
+                <ui:repeat value="#{offer.details}" var="detail">
+                    <div>
+                        <h:outputLabel>
+                            #{detail.roomType}(#{detail.room}): #{detail.price}PLN
+                        </h:outputLabel>
+                    </div>
+                </ui:repeat>
+            </p:column>
+            <p:column headerText="Zdjęcie" style="width: 32%;">
+                <p:graphicImage value="#{offersBean.image}" style="width: 100%; height: auto;">
+                    <f:param name="index" value="#{rowIndex}" />
+                </p:graphicImage>
+            </p:column>
+        </p:dataTable>
+    </f:view>
+</h:body>
+
+</html>

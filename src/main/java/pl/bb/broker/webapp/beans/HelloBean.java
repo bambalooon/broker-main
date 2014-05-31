@@ -3,6 +3,7 @@ package pl.bb.broker.webapp.beans;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import pl.bb.broker.brokerdb.broker.entities.OffersEntity;
+import pl.bb.broker.brokerdb.util.BrokerDBOfferUtil;
 import pl.bb.broker.brokerdb.util.BrokerDBUtil;
 
 import javax.faces.bean.ApplicationScoped;
@@ -59,7 +60,7 @@ public class HelloBean implements Serializable {
         }
         else {
             //requesting actual image
-            OffersEntity offer = BrokerDBUtil.INSTANCE.getOffer(5);
+            OffersEntity offer = BrokerDBOfferUtil.FACTORY.getOffer(5);
             return new DefaultStreamedContent(new ByteArrayInputStream(offer.getImage()));
         }
 

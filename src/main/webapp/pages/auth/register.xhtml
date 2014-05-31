@@ -15,39 +15,36 @@
 
 <h:head>
     <title>Broker Page</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 </h:head>
 
 <h:body>
     <f:view>
         <h:form id="registerForm">
             <h:panelGrid id="grid" columns="2">
-                <h:panelGroup>
-                    <h:outputLabel>Nazwa użytkownika:</h:outputLabel>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:inputText value="#{registerBean.username}" required="true">
-                        <f:validator validatorId="usernameExistsValidator"/>
-                    </h:inputText>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:outputLabel>Hasło #1:</h:outputLabel>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:inputSecret value="#{registerBean.password1}" required="true">
-                        <f:validator validatorId="passwordEqualityValidator"/>
-                        <f:attribute name="password2" value="#{password2}"/>
-                    </h:inputSecret>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:outputLabel>Hasło #2:</h:outputLabel>
-                </h:panelGroup>
-                <h:panelGroup>
-                    <h:inputSecret value="#{registerBean.password2}" id="password2" binding="#{password2}" required="true"/>
-                </h:panelGroup>
-                <h:panelGroup/>
-                <h:panelGroup>
+                <h:outputLabel>Nazwa użytkownika:</h:outputLabel>
+                <h:inputText value="#{registerBean.username}" required="true">
+                    <f:validator validatorId="usernameExistsValidator"/>
+                </h:inputText>
+
+                <h:outputLabel>Hasło #1:</h:outputLabel>
+                <h:inputSecret value="#{registerBean.password1}" required="true">
+                    <f:validator validatorId="passwordEqualityValidator"/>
+                    <f:attribute name="password2" value="#{password2}"/>
+                </h:inputSecret>
+
+                <h:outputLabel>Hasło #2:</h:outputLabel>
+                <h:inputSecret value="#{registerBean.password2}" id="password2" binding="#{password2}" required="true"/>
+
+                <h:outputLabel>Imie:</h:outputLabel>
+                <h:inputText value="#{registerBean.firstname}" required="true" />
+
+                <h:outputLabel>Nazwisko:</h:outputLabel>
+                <h:inputText value="#{registerBean.surname}" required="true" />
+
+                <f:facet name="footer">
                     <h:commandLink value="akceptuj" action="#{registerBean.register}"/>
-                </h:panelGroup>
+                </f:facet>
             </h:panelGrid>
         </h:form>
     </f:view>
