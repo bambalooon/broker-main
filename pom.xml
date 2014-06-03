@@ -17,6 +17,7 @@
       <broker-auth.version>1.0</broker-auth.version>
       <broker-db.version>1.0</broker-db.version>
       <broker-offer.version>1.0</broker-offer.version>
+      <broker-reserv.version>1.0</broker-reserv.version>
       <hibernate.version>4.3.5.Final</hibernate.version>
       <apache-io.version>1.3.2</apache-io.version>
       <mimepull.version>1.9.4</mimepull.version>
@@ -86,6 +87,12 @@
           <groupId>pl.bb.broker</groupId>
           <artifactId>broker-authentication</artifactId>
           <version>${broker-auth.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>pl.bb.broker.brokerreservations</groupId>
+          <artifactId>broker-reservations</artifactId>
+          <version>${broker-reserv.version}</version>
       </dependency>
 
       <dependency>

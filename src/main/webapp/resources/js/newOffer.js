@@ -25,7 +25,6 @@ function delRoom(element) {
     if(tr.parent().children().length>1) {
         tr.remove();
     }
-
 }
 
 function submitForm() {

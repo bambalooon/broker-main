@@ -17,30 +17,35 @@
 <h:head>
     <title>Broker Page</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <h:outputScript library="js" name="jquery-1.11.1.min.js" target="head" />
+    <h:outputScript library="js" name="offers.js" target="head" />
+    <h:outputStylesheet library="css" name="style.css" />
 </h:head>
 
 <h:body>
     <f:view>
         <p:dataTable value="#{offersBean.offers}" var="offer" rowIndexVar="rowIndex" scrollable="false">
-            <p:column headerText="#" style="width: 3%;">
+            <p:column headerText="#" styleClass="idColumn">
                 <h:outputLabel>
                     #{offer.id}
                 </h:outputLabel>
             </p:column>
-            <p:column headerText="Miasto" style="width: 10%;">
+            <p:column headerText="Miasto" styleClass="cityColumn">
                 <h:outputLabel>
                     #{offer.city}
                 </h:outputLabel>
             </p:column>
-            <p:column headerText="Opis" style="width: 30%;">
+            <p:column headerText="Opis" styleClass="descColumn">
                 <h:outputText escape="false" value="#{offer.description}" />
+                <p:commandButton onclick="showReserveBox(this)" image="ui-icon-check" value="rezerwuj" />
+                <h:inputHidden value="#{offer.id}" />
             </p:column>
-            <p:column headerText="Firma" style="width: 10%;">
+            <p:column headerText="Firma" styleClass="companyColumn">
                 <h:outputLabel>
                     #{offer.company.companyname}
                 </h:outputLabel>
             </p:column>
-            <p:column headerText="Pokoje" style="width: 15%;">
+            <p:column headerText="Pokoje" styleClass="roomsColumn">
                 <ui:repeat value="#{offer.details}" var="detail">
                     <div>
                         <h:outputLabel>
@@ -49,12 +54,22 @@
                     </div>
                 </ui:repeat>
             </p:column>
-            <p:column headerText="Zdjęcie" style="width: 32%;">
+            <p:column headerText="Zdjęcie" styleClass="imgColumn">
                 <p:graphicImage value="#{offersBean.image}" style="width: 100%; height: auto;">
                     <f:param name="index" value="#{rowIndex}" />
                 </p:graphicImage>
             </p:column>
         </p:dataTable>
+        <h:panelGroup layout="block" id="pageCover" />
+        <h:panelGroup layout="block" id="reserveBox">
+            <h:form>
+                <h:inputHidden value="#{reservationBean.offerId}" id="reservationOfferId" />
+                <p:calendar value="#{reservationBean.arrival}" />
+                <p:calendar value="#{reservationBean.departure}" />
+                <h:inputText value="#{reservationBean.roomType}" />
+                <p:commandButton action="#{reservationBean.reserve}" value="rezerwuj" ajax="false" />
+            </h:form>
+        </h:panelGroup>
     </f:view>
 </h:body>
 

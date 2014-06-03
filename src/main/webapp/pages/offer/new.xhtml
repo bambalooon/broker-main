@@ -30,6 +30,8 @@
                 <f:facet name="header">
                     <h:outputLabel>Nowa oferta</h:outputLabel>
                 </f:facet>
+                <h:outputLabel>Obiekt:</h:outputLabel>
+                <input type="text" name="facility" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" />
                 <h:outputLabel>Miasto:</h:outputLabel>
                 <input type="text" name="city" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" />
                 <h:outputLabel>Opis oferty:</h:outputLabel>
@@ -48,7 +50,7 @@
                         <p:column>Nazwa</p:column>
                         <p:column>Cena</p:column>
                         <p:column>
-                            <p:button onclick="addRoom()" styleClass="roomBtn" image="ui-icon ui-icon-plusthick" />
+                            <p:commandButton onclick="addRoom()" styleClass="roomBtn" image="ui-icon ui-icon-plusthick" />
                         </p:column>
                     </p:row>
                 </f:facet>
@@ -63,11 +65,11 @@
                         <input type="text" name="prices" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" />
                     </p:column>
                     <p:column>
-                        <p:button onclick="delRoom(this)" styleClass="roomBtn" image="ui-icon ui-icon-closethick" />
+                        <p:commandButton onclick="delRoom(this)" styleClass="roomBtn" image="ui-icon ui-icon-closethick" />
                     </p:column>
                 </p:row>
             </p:panelGrid>
-            <p:button onclick="submitForm()" value="Zapisz" icon="ui-icon-check" />
+            <p:commandButton onclick="submitForm()" value="Zapisz" icon="ui-icon-check" />
         </form>
     </f:view>
 </h:body>
