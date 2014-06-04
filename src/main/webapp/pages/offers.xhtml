@@ -29,6 +29,14 @@
                 <h:outputLabel>
                     #{offer.id}
                 </h:outputLabel>
+                <h:panelGroup styleClass="hiddenRoomContener" layout="block">
+                    <h:panelGroup styleClass="hiddenRoomMenu" layout="block">
+                        <p:selectOneMenu value="#{reservationBean.roomType}">
+                            <f:selectItems value="#{offer.details}" var="detail"
+                                           itemLabel="#{detail.room}" itemValue="#{detail.roomType}" />
+                        </p:selectOneMenu>
+                    </h:panelGroup>
+                </h:panelGroup>
             </p:column>
             <p:column headerText="Miasto" styleClass="cityColumn">
                 <h:outputLabel>
@@ -36,7 +44,16 @@
                 </h:outputLabel>
             </p:column>
             <p:column headerText="Opis" styleClass="descColumn">
-                <h:outputText escape="false" value="#{offer.description}" />
+                <h:panelGroup layout="block">
+                    <h:outputText escape="false" value="#{offer.description}" />
+                </h:panelGroup>
+                <h:panelGroup layout="block">
+                    <ul class="roomsList">
+                        <ui:repeat value="#{offer.details}" var="detail">
+                            <li>#{detail.room} #{detail.price}PLN</li>
+                        </ui:repeat>
+                    </ul>
+                </h:panelGroup>
                 <p:commandButton onclick="showReserveBox(this)" image="ui-icon-check" value="rezerwuj" />
                 <h:inputHidden value="#{offer.id}" />
             </p:column>
@@ -44,15 +61,10 @@
                 <h:outputLabel>
                     #{offer.company.companyname}
                 </h:outputLabel>
-            </p:column>
-            <p:column headerText="Pokoje" styleClass="roomsColumn">
-                <ui:repeat value="#{offer.details}" var="detail">
-                    <div>
-                        <h:outputLabel>
-                            #{detail.roomType}(#{detail.room}): #{detail.price}PLN
-                        </h:outputLabel>
-                    </div>
-                </ui:repeat>
+                <p:selectOneMenu>
+                    <f:selectItems value="#{offer.details}" var="detail"
+                                   itemLabel="#{detail.room}" itemValue="#{detail.roomType}" />
+                </p:selectOneMenu>
             </p:column>
             <p:column headerText="Zdjęcie" styleClass="imgColumn">
                 <p:graphicImage value="#{offersBean.image}" style="width: 100%; height: auto;">
@@ -62,11 +74,13 @@
         </p:dataTable>
         <h:panelGroup layout="block" id="pageCover" />
         <h:panelGroup layout="block" id="reserveBox">
-            <h:form>
+            <h:form id="reservation">
                 <h:inputHidden value="#{reservationBean.offerId}" id="reservationOfferId" />
-                <p:calendar value="#{reservationBean.arrival}" />
-                <p:calendar value="#{reservationBean.departure}" />
-                <h:inputText value="#{reservationBean.roomType}" />
+                <p:calendar value="#{reservationBean.arrival}" binding="#{arrival}" />
+                <p:calendar value="#{reservationBean.departure}" validator="dateValidator">
+                    <f:attribute name="arrival" value="#{arrival}" />
+                </p:calendar>
+                <h:panelGroup id="roomMenu" layout="block" />
                 <p:commandButton action="#{reservationBean.reserve}" value="rezerwuj" ajax="false" />
             </h:form>
         </h:panelGroup>

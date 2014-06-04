@@ -26,6 +26,10 @@
     width: 20px;
     height: 20px;
 }
+.hiddenRoomContener {
+    display: none;
+}
+.hiddenRoomMenu {}
 
 .idColumn {
     width: 3%;
@@ -34,17 +38,17 @@
     width: 10%;
 }
 .descColumn {
-    width: 35%;
+    width: 45%;
 }
 .companyColumn {
-    width: 10%;
-}
-.roomsColumn {
-    width: 15%;
+    width: 17%;
 }
 .imgColumn {
-    width: 27%;
+    width: 25%;
 }
 .block {
     display: block;
+}
+ul.roomsList {
+    list-style-type: none;
 }
