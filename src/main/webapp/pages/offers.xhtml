@@ -29,14 +29,6 @@
                 <h:outputLabel>
                     #{offer.id}
                 </h:outputLabel>
-                <h:panelGroup styleClass="hiddenRoomContener" layout="block">
-                    <h:panelGroup styleClass="hiddenRoomMenu" layout="block">
-                        <p:selectOneMenu value="#{reservationBean.roomType}">
-                            <f:selectItems value="#{offer.details}" var="detail"
-                                           itemLabel="#{detail.room}" itemValue="#{detail.roomType}" />
-                        </p:selectOneMenu>
-                    </h:panelGroup>
-                </h:panelGroup>
             </p:column>
             <p:column headerText="Miasto" styleClass="cityColumn">
                 <h:outputLabel>
@@ -61,10 +53,14 @@
                 <h:outputLabel>
                     #{offer.company.companyname}
                 </h:outputLabel>
-                <p:selectOneMenu>
-                    <f:selectItems value="#{offer.details}" var="detail"
-                                   itemLabel="#{detail.room}" itemValue="#{detail.roomType}" />
-                </p:selectOneMenu>
+                <h:panelGroup styleClass="hiddenRoomContener" layout="block">
+                    <h:panelGroup styleClass="hiddenRoomMenu" layout="block">
+                        <p:selectOneMenu value="#{reservationBean.roomType}">
+                            <f:selectItems value="#{offer.details}" var="detail"
+                                           itemLabel="#{detail.room}" itemValue="#{detail.roomType}" />
+                        </p:selectOneMenu>
+                    </h:panelGroup>
+                </h:panelGroup>
             </p:column>
             <p:column headerText="Zdjęcie" styleClass="imgColumn">
                 <p:graphicImage value="#{offersBean.image}" style="width: 100%; height: auto;">
@@ -77,9 +73,10 @@
             <h:form id="reservation">
                 <h:inputHidden value="#{reservationBean.offerId}" id="reservationOfferId" />
                 <p:calendar value="#{reservationBean.arrival}" binding="#{arrival}" />
-                <p:calendar value="#{reservationBean.departure}" validator="dateValidator">
+                <p:calendar id="date" value="#{reservationBean.departure}" validator="dateValidator">
                     <f:attribute name="arrival" value="#{arrival}" />
                 </p:calendar>
+                <p:message for="date" styleClass="errorMessage" />
                 <h:panelGroup id="roomMenu" layout="block" />
                 <p:commandButton action="#{reservationBean.reserve}" value="rezerwuj" ajax="false" />
             </h:form>

@@ -27,10 +27,15 @@
     height: 20px;
 }
 .hiddenRoomContener {
-    display: none;
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    width: 200px;
 }
 .hiddenRoomMenu {}
-
+.errorMessage {
+    color: red;
+}
 .idColumn {
     width: 3%;
 }

@@ -31,6 +31,7 @@ function hideReserveBox() {
 }
 
 $(document).ready(function() {
+//    $(".hiddenRoomContener").hide();
     $("#pageCover").click(function() {
         hideReserveBox();
     });
