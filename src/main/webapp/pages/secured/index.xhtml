@@ -22,7 +22,7 @@
     <f:view>
         <h:form>
             <h:inputText id="name" value="#{helloBean.name}" />
-            <h:commandLink value="akceptuj" action="hello"/><br />
+            <h:link outcome="../offers.xhtml">Offers</h:link><br/>
             <h:link outcome="../offer/new.xhtml">New Offer</h:link><br/>
             <h:commandLink action="#{loginBean.logout}" value="Wyloguj!"/>
         </h:form>

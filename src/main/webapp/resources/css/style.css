@@ -7,10 +7,14 @@
     left: 50%;
     margin-top: -100px;
     margin-left: -300px;
-    width: 600px;
-    height: 200px;
+    width: 700px;
+    height: 400px;
     background-color: darkgrey;
     z-index: 1000;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid white;
 }
 #pageCover {
     display: none;
@@ -29,7 +33,7 @@
 .hiddenRoomContener {
     display: block;
     position: absolute;
-    z-index: 1000;
+    z-index: -1;
     width: 200px;
 }
 .hiddenRoomMenu {}

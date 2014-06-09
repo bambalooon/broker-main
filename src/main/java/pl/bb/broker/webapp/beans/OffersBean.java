@@ -73,7 +73,7 @@ public class OffersBean implements Serializable {
                     .get(ClientResponse.class);
 
             if(response.getStatus() != 200) {
-                throw new Exception("Service error / unavilable: "+response.getStatus());
+                throw new Exception("Service error / unavailable: "+response.getStatus());
             }
             XmlCollectionWrapper<OffersEntity> xmlOffers = response.getEntity(XmlCollectionWrapper.class);
             offers = xmlOffers.getItems();

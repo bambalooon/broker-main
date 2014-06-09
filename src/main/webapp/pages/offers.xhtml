@@ -55,7 +55,7 @@
                 </h:outputLabel>
                 <h:panelGroup styleClass="hiddenRoomContener" layout="block">
                     <h:panelGroup styleClass="hiddenRoomMenu" layout="block">
-                        <p:selectOneMenu value="#{reservationBean.roomType}">
+                        <p:selectOneMenu>
                             <f:selectItems value="#{offer.details}" var="detail"
                                            itemLabel="#{detail.room}" itemValue="#{detail.roomType}" />
                         </p:selectOneMenu>
@@ -71,14 +71,16 @@
         <h:panelGroup layout="block" id="pageCover" />
         <h:panelGroup layout="block" id="reserveBox">
             <h:form id="reservation">
+                <p:messages id="messages" />
                 <h:inputHidden value="#{reservationBean.offerId}" id="reservationOfferId" />
-                <p:calendar value="#{reservationBean.arrival}" binding="#{arrival}" />
-                <p:calendar id="date" value="#{reservationBean.departure}" validator="dateValidator">
+                <h:inputHidden value="#{reservationBean.roomType}" id="reservationRoomType" />
+                <p:calendar value="#{reservationBean.arrival}" binding="#{arrival}" required="true" />
+                <p:calendar id="date" value="#{reservationBean.departure}" validator="dateValidator" required="true">
                     <f:attribute name="arrival" value="#{arrival}" />
                 </p:calendar>
-                <p:message for="date" styleClass="errorMessage" />
                 <h:panelGroup id="roomMenu" layout="block" />
-                <p:commandButton action="#{reservationBean.reserve}" value="rezerwuj" ajax="false" />
+                <p:commandButton action="#{reservationBean.reserve}" value="rezerwuj"
+                    process="reservation" update="messages" onstart="" oncomplete="showMessages()" />
             </h:form>
         </h:panelGroup>
     </f:view>
