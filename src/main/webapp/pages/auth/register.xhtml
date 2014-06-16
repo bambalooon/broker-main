@@ -11,42 +11,63 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core" xmlns:form="http://www.springframework.org/tags/form">
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:form="http://www.springframework.org/tags/form"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <title>Broker Page</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <h:outputStylesheet library="css" name="page.css" />
+    <h:outputStylesheet library="css" name="style.css" />
 </h:head>
 
 <h:body>
     <f:view>
-        <h:form id="registerForm">
-            <h:panelGrid id="grid" columns="2">
-                <h:outputLabel>Nazwa użytkownika:</h:outputLabel>
-                <h:inputText value="#{registerBean.username}" required="true">
-                    <f:validator validatorId="usernameExistsValidator"/>
-                </h:inputText>
+        <div id="header">
+            <ui:insert name="header">
+                <ui:include src="../../templates/header.xhtml" />
+            </ui:insert>
+        </div>
+        <div style="background-color: #ffffff;">
+            <div id="pagebody">
+                <div id="content">
+                    <h:form id="registerForm">
+                        <p:messages id="messages" />
+                        <h:panelGrid id="grid" columns="2" columnClasses="login-odd, login-even" cellspacing="0" cellpadding="0" styleClass="collapse">
+                            <h:outputLabel>Nazwa użytkownika:</h:outputLabel>
+                            <p:inputText value="#{registerBean.username}" required="true">
+                                <f:validator validatorId="usernameExistsValidator"/>
+                            </p:inputText>
 
-                <h:outputLabel>Hasło #1:</h:outputLabel>
-                <h:inputSecret value="#{registerBean.password1}" required="true">
-                    <f:validator validatorId="passwordEqualityValidator"/>
-                    <f:attribute name="password2" value="#{password2}"/>
-                </h:inputSecret>
+                            <h:outputLabel>Hasło #1:</h:outputLabel>
+                            <p:password value="#{registerBean.password1}" required="true">
+                                <f:validator validatorId="passwordEqualityValidator"/>
+                                <f:attribute name="password2" value="#{password2}"/>
+                            </p:password>
 
-                <h:outputLabel>Hasło #2:</h:outputLabel>
-                <h:inputSecret value="#{registerBean.password2}" id="password2" binding="#{password2}" required="true"/>
+                            <h:outputLabel>Hasło #2:</h:outputLabel>
+                            <p:password value="#{registerBean.password2}" id="password2" binding="#{password2}" required="true"/>
 
-                <h:outputLabel>Imie:</h:outputLabel>
-                <h:inputText value="#{registerBean.firstname}" required="true" />
+                            <h:outputLabel>Imie:</h:outputLabel>
+                            <p:inputText value="#{registerBean.firstname}" required="true" />
 
-                <h:outputLabel>Nazwisko:</h:outputLabel>
-                <h:inputText value="#{registerBean.surname}" required="true" />
+                            <h:outputLabel>Nazwisko:</h:outputLabel>
+                            <p:inputText value="#{registerBean.surname}" required="true" />
 
-                <f:facet name="footer">
-                    <h:commandLink value="akceptuj" action="#{registerBean.register}"/>
-                </f:facet>
-            </h:panelGrid>
-        </h:form>
+                            <f:facet name="footer">
+                                <p:commandButton value="akceptuj" action="#{registerBean.register}" update="messages" icon="ui-icon-check"/>
+                            </f:facet>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <ui:insert name="footer">
+                <ui:include src="../../templates/footer.xhtml" />
+            </ui:insert>
+        </div>
     </f:view>
 </h:body>
 

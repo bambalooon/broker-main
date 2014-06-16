@@ -5,8 +5,8 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-top: -100px;
-    margin-left: -300px;
+    margin-top: -200px;
+    margin-left: -350px;
     width: 700px;
     height: 400px;
     background-color: darkgrey;
@@ -51,6 +51,9 @@
 }
 .companyColumn {
     width: 17%;
+}
+.roomsColumn {
+    width: 25%;
 }
 .imgColumn {
     width: 25%;

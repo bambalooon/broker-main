@@ -27,17 +27,17 @@
     <f:view>
         <div id="header">
             <ui:insert name="header">
-                <ui:include src="../templates/header.xhtml" />
+                <ui:include src="../../templates/header.xhtml" />
             </ui:insert>
         </div>
         <div style="background-color: #ffffff;">
             <div id="pagebody">
                 <div id="content">
-                    <p:dataTable id="offers" value="#{offersBean.offers}" var="offer" rowIndexVar="rowIndex" scrollable="false">
+                    <p:messages id="messages"/>
+                    <p:dataTable id="favorites" value="#{clientBean.favorites}" var="offer" rowIndexVar="rowIndex" scrollable="false">
                         <p:column headerText="#" styleClass="idColumn">
                             <h:outputLabel>
                                 #{offer.id}
-                                <p:commandButton icon="ui-icon-star" action="#{clientBean.addFavorite(offer)}" process="@this" rendered="#{!userBean.isFavorite(offer)}" update="offers" />
                             </h:outputLabel>
                         </p:column>
                         <p:column headerText="Miasto" styleClass="cityColumn">
@@ -45,7 +45,7 @@
                                 #{offer.city}
                             </h:outputLabel>
                         </p:column>
-                        <p:column headerText="Opis" styleClass="descColumn">
+                        <p:column headerText="Opis" styleClass="descColumn" style="width: 30%;">
                             <h:panelGroup layout="block">
                                 <h:outputText escape="false" value="#{offer.description}" />
                             </h:panelGroup>
@@ -77,13 +77,16 @@
                                 <f:param name="index" value="#{rowIndex}" />
                             </p:graphicImage>
                         </p:column>
+                        <p:column style="width: 15%;">
+                            <p:commandButton icon="ui-icon-minusthick" action="#{clientBean.removeFavorite(offer)}" update="favorites, :messages" process="@this" />
+                        </p:column>
                     </p:dataTable>
                 </div>
             </div>
         </div>
         <div id="footer">
             <ui:insert name="footer">
-                <ui:include src="../templates/footer.xhtml" />
+                <ui:include src="../../templates/footer.xhtml" />
             </ui:insert>
         </div>
         <h:panelGroup layout="block" id="pageCover" />

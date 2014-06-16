@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: BamBalooon
+  Date: 23.05.14
+  Time: 20:47
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:form="http://www.springframework.org/tags/form"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Broker Page</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <h:outputStylesheet library="css" name="page.css" />
+    <h:outputStylesheet library="css" name="style.css" />
+</h:head>
+
+<h:body>
+    <f:view>
+        <div id="header">
+            <ui:insert name="header">
+                <ui:include src="../../templates/header.xhtml" />
+            </ui:insert>
+        </div>
+        <div style="background-color: #ffffff;">
+            <div id="pagebody">
+                <div id="content">
+                    <h:form>
+                        <p:messages id="messages"/>
+                        <h:commandLink action="#{loginBean.logout}" value="Wyloguj!"/>
+                        <p:dataTable value="#{reservationManagementBean.reservations}" var="reserv" rowIndexVar="rowIndex" scrollable="false">
+                            <f:facet name="header">
+                                <p:column colspan="6">
+                                    <h:outputLabel>Twoje rezerwacje</h:outputLabel>
+                                </p:column>
+                            </f:facet>
+                            <p:column headerText="Miasto">
+                                <h:outputLabel value="#{reserv.offer.city}" />
+                            </p:column>
+                            <p:column headerText="Pokój">
+                                <h:outputLabel value="#{reserv.room.room}" />
+                            </p:column>
+                            <p:column headerText="Przyjazd">
+                                <h:outputLabel value="#{reserv.arrival}">
+                                    <f:convertDateTime pattern="dd.MM.YYYY"/>
+                                </h:outputLabel>
+                            </p:column>
+                            <p:column headerText="Wyjazd">
+                                <h:outputLabel value="#{reserv.departure}">
+                                    <f:convertDateTime pattern="dd.MM.YYYY"/>
+                                </h:outputLabel>
+                            </p:column>
+                            <p:column headerText="Cena">
+                                <h:outputLabel value="#{reserv.room.price}PLN" />
+                            </p:column>
+                            <p:column headerText="Status">
+                                <h:outputLabel value="#{reservationManagementBean.translate(reserv)}" />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <ui:insert name="footer">
+                <ui:include src="../../templates/footer.xhtml" />
+            </ui:insert>
+        </div>
+    </f:view>
+</h:body>
+
+</html>
